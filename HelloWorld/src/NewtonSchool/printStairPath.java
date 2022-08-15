@@ -4,18 +4,18 @@ import java.util.Scanner;
 
 public class printStairPath {
 	
-public static int countStairPath(int stair[][], int n) {
+public static int countStairPath(int n) {
 		
 		if(n<0) return 0;
 		if(n==0) return 1;
 		
-		int a = countStairPath(stair, n-1);
-		int b = countStairPath(stair, n-2);
-		int c = countStairPath(stair, n-3);
+		int a = countStairPath(n-1);
+		int b = countStairPath(n-2);
+		int c = countStairPath(n-3);
 		return a+b+c;
 	}
 	
-	public static void stairPathPrint(int stair[][], String psf, int n) {
+	public static void stairPathPrint(String psf, int n) {
 		
 		if(n<0) return;
 		
@@ -25,19 +25,18 @@ public static int countStairPath(int stair[][], int n) {
 			return;
 		}
 		
-		stairPathPrint(stair, psf + "1", n-1);
-		stairPathPrint(stair, psf + "2", n-2);
-		stairPathPrint(stair, psf + "3", n-3);
+		stairPathPrint(psf + "1", n-1);
+		stairPathPrint(psf + "2", n-2);
+		stairPathPrint(psf + "3", n-3);
 	}
 
 	public static void main(String[] args) {
 		
 		Scanner sc=new Scanner(System.in);
 		int N=sc.nextInt();
-		int stair[][]=new int[0][N];
 		sc.close();
-		System.out.println(countStairPath(stair, N));
-		stairPathPrint(stair, "", N);
+		System.out.println(countStairPath(N));
+		stairPathPrint("", N);
 	}
 
 }
